@@ -11,6 +11,7 @@ var characters: Dictionary = {}
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	font = load("res://assets/fonts/NotoSansJP-Regular.otf")
 	for name in ["tachibana_idle", "tachibana_success", "tachibana_miss", "tachibana_clear", "tachibana_fail", "tachibana_title", "boss_idle", "boss_talk", "boss_happy", "boss_angry", "boss_clap", "boss_clap2"]:
 		characters[name] = load("res://assets/characters/" + name + ".svg")
@@ -30,7 +31,11 @@ func center(words: String, y: float, font_size := 24, color: Color = INK) -> voi
 	txt(words, (1280 - font.get_string_size(words, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x) * .5, y, font_size, color)
 
 func character(name: String, rect: Rect2) -> void:
-	draw_texture_rect(characters[name], rect, false)
+	var texture: Texture2D = characters[name]
+	var factor := minf(rect.size.x / texture.get_width(), rect.size.y / texture.get_height())
+	var drawn_size := texture.get_size() * factor
+	var origin := rect.position + Vector2((rect.size.x - drawn_size.x) * .5, rect.size.y - drawn_size.y)
+	draw_texture_rect(texture, Rect2(origin.round(), drawn_size), false)
 
 func office() -> void:
 	draw_rect(Rect2(0, 0, 1280, 720), CREAM)

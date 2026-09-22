@@ -14,3 +14,9 @@
 検証証拠：`tests/artifacts/unit_integration.json`（148項目成功）、`tests/artifacts/export.log`、Chrome画面は `tests/artifacts/browser_*.png`。
 
 完了証拠：`tests/artifacts/browser_full.json` は公開URLでの全編114 PERFECT、GOOD/OK/誤番号MISS、15MISSでの失敗、タッチ4入力、一時停止中の時計差0、実行エラー0を記録。Pages公開成功：Actions run `35719632876`。詳細と実機未検証の範囲は `VERIFICATION.md`。
+
+## T02 表現修正：キャラクターのドット絵化
+
+2026-09-22のユーザー指定「高密度ドットで親しみやすいがポップな、シンプルな絵」に合わせて、立花さんと上司の全12状態を96×128のオリジナルドット絵へ描き直した。状態：完了（公開更新を本コミットで実行）。依存T01/T03/T04は完了済み。輪郭をぼかさず縦横比を保つ描画に変更。タイトル・本編・クリア・失敗・スマートフォン表示を確認。譜面・音・判定は変更していない。
+
+証拠：`tests/artifacts/pixel_characters.png`（12状態）、`tests/artifacts/pixel_v2/browser_full.json`（114 PERFECT、クリア・15MISS・タッチ4入力・実行エラー0）、同フォルダーの各画面PNG。原画の編集元は `tools/pixel_characters.py`。通常の素材再生成も新しいドット絵を出力する。

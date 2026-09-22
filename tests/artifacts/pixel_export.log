@@ -1,0 +1,138 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started プロジェクトの初期化 (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | ファイル構造をスキャン中...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | グローバルクラス名を読み込み中...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | GDExtensionを検証中...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | 自動読み込みスクリプトを作成中...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | プラグインを初期化中...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | ファイルスキャンを開始...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started アクションをスキャン中... (12 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | boss_angry.svg[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | boss_clap2.svg[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | boss_clap.svg[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | boss_happy.svg[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | boss_idle.svg[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | boss_talk.svg[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | tachibana_clear.svg[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | tachibana_fail.svg[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | tachibana_idle.svg[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | tachibana_miss.svg[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | tachibana_success.svg[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | tachibana_title.svg[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started アセットを(再)インポート中 (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 再インポートするファイルを準備中...[39m[0m
+[  33% ] [90m[1mreimport[22m | 再インポートするファイルを準備中...[39m[0m
+[   0% ] [90m[1mreimport[22m | 再インポート前の操作を実行中...[39m[0m
+[   0% ] [90m[1mreimport[22m | boss_happy.svg[39m[0m
+[  33% ] [90m[1mreimport[22m | boss_talk.svg[39m[0m
+[  66% ] [90m[1mreimport[22m | アセットインポートを終了しています...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started アセットを(再)インポート中 (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 再インポート後の操作を実行中...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started エディターの読み込み (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | エディターレイアウトを読み込み中...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started プロジェクトの初期化 (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | ファイル構造をスキャン中...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | グローバルクラス名を読み込み中...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | GDExtensionを検証中...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | 自動読み込みスクリプトを作成中...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | プラグインを初期化中...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | ファイルスキャンを開始...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1msavepack[22m | Started パック中 (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/clear.wav-ef29d2c1fa31b6e75146046be779bc8e.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/clear.wav.import[39m[0m
+[   3% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/cymbal.wav-4cf565238cf68bc20479aebc8f022c0c.sample[39m[0m
+[   3% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/cymbal.wav.import[39m[0m
+[   5% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/error.wav-99844ed22afbc0c517ece11da3662cae.sample[39m[0m
+[   5% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/error.wav.import[39m[0m
+[   8% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/fail.wav-12177158cbfea6e59bd83d8ccc3d39ca.sample[39m[0m
+[   8% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/fail.wav.import[39m[0m
+[  10% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/kick.wav-e01fe7a0a6f03388b745eba0b2aef1cd.sample[39m[0m
+[  10% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/kick.wav.import[39m[0m
+[  13% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/omit.wav-bf72f892d6e50f6c3f6bf4d2c5f63db9.sample[39m[0m
+[  13% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/omit.wav.import[39m[0m
+[  15% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/stage_01.wav-42eca6c59a771367c6093889a565df6b.sample[39m[0m
+[  15% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/stage_01.wav.import[39m[0m
+[  18% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/stage_02.wav-e6fb1eebef46724cd7c8bc6736dc7108.sample[39m[0m
+[  18% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/stage_02.wav.import[39m[0m
+[  20% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/stage_03.wav-cfed5752fa9ad00b498acdd5dcc9b1bd.sample[39m[0m
+[  20% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/stage_03.wav.import[39m[0m
+[  22% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tambourine.wav-f75cb695b872f0645c223150a1fb3f18.sample[39m[0m
+[  22% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/tambourine.wav.import[39m[0m
+[  25% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tick.wav-ac9aaab6837b87490f6b4b66be5055d7.sample[39m[0m
+[  25% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/tick.wav.import[39m[0m
+[  27% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/triangle.wav-fe03f4456b87308b02ce7b5d0d83ecf8.sample[39m[0m
+[  27% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/triangle.wav.import[39m[0m
+[  30% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tutorial.wav-6c9fabcca5e887b516fee8d61973ef09.sample[39m[0m
+[  30% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/tutorial.wav.import[39m[0m
+[  32% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/wind.wav-26bd3f95e99896071b625821c2f0df7a.sample[39m[0m
+[  32% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/audio/wind.wav.import[39m[0m
+[  34% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/boss_angry.svg-6f9651029d0163561ada0bae3d83ccf9.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/boss_angry.svg.import[39m[0m
+[  36% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/boss_clap2.svg-e5daffe61e5d4d99902aec3f07dabb85.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/boss_clap2.svg.import[39m[0m
+[  39% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/boss_clap.svg-f71f3391234734c34f685a4627626b4d.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/boss_clap.svg.import[39m[0m
+[  41% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/boss_happy.svg-b0c4516a51058fa7274a422c137df7aa.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/boss_happy.svg.import[39m[0m
+[  43% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/boss_idle.svg-b4169f0d47fcd47a2615e1d228f7729f.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/boss_idle.svg.import[39m[0m
+[  46% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/boss_talk.svg-17a974e55591d4ce6b537244fdb7708b.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/boss_talk.svg.import[39m[0m
+[  48% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tachibana_clear.svg-76f52c01e629fb034dbe7e0207d2ba2b.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/tachibana_clear.svg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tachibana_fail.svg-2bde696b3af8e38bd899163439ea014c.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/tachibana_fail.svg.import[39m[0m
+[  53% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tachibana_idle.svg-fe0805b6a92f9c29083d3313fac922c9.ctex[39m[0m
+[  53% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/tachibana_idle.svg.import[39m[0m
+[  56% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tachibana_miss.svg-b4b335783e57b5a68818f68524cf2138.ctex[39m[0m
+[  56% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/tachibana_miss.svg.import[39m[0m
+[  58% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tachibana_success.svg-794c8452e121c599fc197b8978fa3b17.ctex[39m[0m
+[  58% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/tachibana_success.svg.import[39m[0m
+[  60% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/tachibana_title.svg-58c1c2b28169b20e1bdd10e9a216f2c9.ctex[39m[0m
+[  60% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/characters/tachibana_title.svg.import[39m[0m
+[  63% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/NotoSansJP-Regular.otf-01d7b4f07441594ec92b409fcad91689.fontdata[39m[0m
+[  63% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/fonts/NotoSansJP-Regular.otf.import[39m[0m
+[  65% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex[39m[0m
+[  65% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/icon.svg.import[39m[0m
+[  67% ] [90m[1msavepack[22m | ファイルの保存中: res://data/settings.json[39m[0m
+[  69% ] [90m[1msavepack[22m | ファイルの保存中: res://data/stage_01.json[39m[0m
+[  72% ] [90m[1msavepack[22m | ファイルの保存中: res://data/stage_02.json[39m[0m
+[  74% ] [90m[1msavepack[22m | ファイルの保存中: res://data/stage_03.json[39m[0m
+[  77% ] [90m[1msavepack[22m | ファイルの保存中: res://data/tutorial.json[39m[0m
+[  79% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/exported/133200997/export-4a24720ee5e787dbe30abc634fa3679d-Main.scn[39m[0m
+[  81% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/audio_manager.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/game_manager.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/office_view.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/rhythm_manager.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/score_manager.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/stage_loader.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/task_screen.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scenes/Main.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/audio_manager.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/game_manager.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/office_view.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/rhythm_manager.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/score_manager.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/stage_loader.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://scripts/task_screen.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/global_script_class_cache.cfg[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://assets/icon.svg[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://.godot/uid_cache.bin[39m[0m
+[  96% ] [90m[1msavepack[22m | ファイルの保存中: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m

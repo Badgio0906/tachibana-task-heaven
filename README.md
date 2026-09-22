@@ -4,7 +4,7 @@ Godotで制作したブラウザリズムゲーム。上司のお手本を覚え
 
 **[ブラウザで遊ぶ](https://badgio0906.github.io/tachibana-task-heaven/)**
 
-![タイトル](tests/artifacts/browser_title.png)
+![タイトル](tests/artifacts/pixel_v2/browser_title.png)
 
 ## 操作
 
@@ -49,7 +49,8 @@ Godotで制作したブラウザリズムゲーム。上司のお手本を覚え
 | 判定と入力処理 | `scripts/rhythm_manager.gd` |
 | スコア・コンボ | `scripts/score_manager.gd` |
 | 画面構成とキャラクター演出 | `scripts/office_view.gd` / `scripts/task_screen.gd` |
-| BGM・SE・SVGイラスト生成 | `tools/build_assets.py` |
+| BGM・SE・アイコン生成 | `tools/build_assets.py` |
+| キャラクターのドット絵・配色・表情 | `tools/pixel_characters.py`（96×128、全12状態） |
 | Web音声同期 | `web/audio.js` / `scripts/audio_manager.gd` |
 
 各ノートは `beat`（拍）と `channel`（1〜4）。`length` はフレーズ全長、`rests` は休符の拍、最後の問題に `final: true` を設定します。
