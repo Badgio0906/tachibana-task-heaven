@@ -1,5 +1,5 @@
 {
-  "base": "https://badgio0906.github.io/tachibana-task-heaven/",
+  "base": "http://127.0.0.1:8766/",
   "mode": "full",
   "results": [
     {
@@ -11,10 +11,7 @@
       }
     },
     {
-      "pauseDrift": 0
-    },
-    {
-      "audioEnergy": 0.16028743982315063
+      "audioEnergy": 0.25999385118484497
     },
     {
       "stage": 0,
@@ -85,27 +82,19 @@
       "task": 100
     },
     {
-      "judgmentProbe": {
-        "GOOD": 1,
-        "MISS": 1,
-        "OK": 1,
-        "PERFECT": 0
-      }
-    },
-    {
       "failure": {
         "combo": 0,
         "counts": {
-          "GOOD": 1,
+          "GOOD": 0,
           "MISS": 15,
-          "OK": 1,
+          "OK": 0,
           "PERFECT": 0
         },
         "misses": 15,
         "phase": "answer",
         "portrait": false,
-        "round": 4,
-        "score": 110,
+        "round": 3,
+        "score": 0,
         "stage": 1,
         "state": "fail",
         "task": 0

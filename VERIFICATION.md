@@ -17,7 +17,19 @@
 
 ## 公開URL
 
-GitHub Pages公開後、最終リリースを公開URLでも確認し、結果を追記する。
+- 公開先： https://badgio0906.github.io/tachibana-task-heaven/
+- リポジトリ： https://github.com/Badgio0906/tachibana-task-heaven
+- Pages成功： https://github.com/Badgio0906/tachibana-task-heaven/actions/runs/35719632876
+- 公開URLを新しいChromeコンテキストで開いて初回START→説明→練習→全3ステージを再検証。114 PERFECT、11400点、TASK100%、クリア。
+- 一時停止の前後で音声時計差0秒。再開後の入力も全PERFECT。
+- RETRY後、意図的に入力を遅らせGOOD・OKを各1、誤番号でMISSを1確認。その後押し忘れにより累計15MISS、110点のゲームオーバー。TITLE帰還も確認。
+- 同じ公開URLで844×390タッチ練習全4 PERFECT。390×844の案内は修正後の大きな文字で確認。
+- 公開リリースでF4を押してもタイトルのまま。強制クリア無効。
+- 音声出力振幅0.160、AudioContext running、13音源読込、ブラウザエラー0。
+- `browser_full.json` は公開版の記録、`browser_local_full.json` は先行ローカル検証記録。
+- 公開前の最初のActionsはPages未有効化で失敗したが、Pagesを有効化して次の実行で解消済み。
+
+公開通し検証後、判定幅・クリア率・MISS上限の説明表示も設定JSONを読むよう統一。既定値・ゲーム挙動は変更していない。再エクスポートと最終ページ表示で確認。
 
 ## 確認範囲
 

@@ -24,6 +24,8 @@ function timeline(index){
  await page.screenshot({path:path.join(out,'browser_title.png')});
  console.log('TITLE loaded',base);
  if(mode==='screens'){await browser.close();return;}
+ await page.keyboard.press('F4'); await sleep(150);
+ if(await page.evaluate(()=>TaskHeavenStatus.state)!=='title')throw Error('Release debug shortcut is active');
  await page.mouse.click(220,489);
  await page.waitForFunction(()=>window.TaskHeavenStatus?.state==='help');
  await page.screenshot({path:path.join(out,'browser_help.png')});
@@ -32,6 +34,14 @@ function timeline(index){
  const audio=await page.evaluate(()=>({state:TaskAudio.context.state,sampleRate:TaskAudio.context.sampleRate,ready:TaskAudio.ready,buffers:Object.keys(TaskAudio.buffers).length}));
  if(audio.state!=='running'||audio.buffers!==13)throw Error('Audio not ready');
  results.push({audio});
+ await page.mouse.click(1207,48);
+ await page.waitForFunction(()=>TaskHeavenStatus.state==='paused');
+ const pausedAt=await page.evaluate(()=>TaskAudio.clock());await sleep(300);
+ const pauseDrift=await page.evaluate(()=>TaskAudio.clock())-pausedAt;
+ if(Math.abs(pauseDrift)>.025)throw Error('Pause did not freeze audio clock');
+ results.push({pauseDrift});
+ await page.mouse.click(620,375);
+ await page.waitForFunction(()=>TaskHeavenStatus.state==='playing');
  // Verify actual non-silent samples reach the output graph.
  results.push({audioEnergy:await page.evaluate(async()=>{
    const a=TaskAudio.context.createAnalyser();TaskAudio.gain.connect(a);a.fftSize=2048;
@@ -64,7 +74,15 @@ function timeline(index){
   }
   await page.mouse.click(500,645);
   await page.waitForFunction(()=>TaskHeavenStatus.state==='playing');
+  const probe=timeline(1).notes;
+  for(let i=0;i<3;i++){
+   await page.waitForFunction(t=>TaskAudio.clock()>=t,probe[i].time+[.12,.23,0][i],{polling:'raf'});
+   await page.keyboard.press(String(i===2?4:probe[i].ch));
+  }
+  await page.waitForFunction(()=>TaskHeavenStatus.counts.GOOD>=1&&TaskHeavenStatus.counts.OK>=1&&TaskHeavenStatus.counts.MISS>=1);
+  results.push({judgmentProbe:await page.evaluate(()=>TaskHeavenStatus.counts)});
   await page.waitForFunction(()=>TaskHeavenStatus.state==='fail',null,{timeout:60000});
+  await sleep(700);
   results.push({failure:await page.evaluate(()=>TaskHeavenStatus)});
   await page.screenshot({path:path.join(out,'browser_fail.png')});
   await page.mouse.click(800,645);

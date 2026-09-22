@@ -9,8 +9,8 @@
 - [x] 日本語フォント・ライセンス同梱
 - [x] 自動判定・全編状態遷移148項目
 - [x] Godot Web Release出力
-- [ ] Chrome全編プレイ・音声・スマートフォン相当確認
-- [ ] GitHubへpush・GitHub Pages公開
-- [ ] 公開URLで再確認
+- [x] Chrome全編プレイ・音声・スマートフォン相当確認
+- [x] GitHubへpush・GitHub Pages公開
+- [x] 公開URLで再確認
 
 工程・証拠は `ROADMAP.md`、最終結果は `VERIFICATION.md` に記録する。
