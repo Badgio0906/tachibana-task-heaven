@@ -40,6 +40,8 @@ var pause_usec := 0
 var test_mode := false
 var portrait: Panel
 var status_elapsed := 0.0
+var fade_overlay: ColorRect
+var result_started := 0.0
 
 func _ready() -> void:
 	settings = Loader.read_json("res://data/settings.json")
@@ -67,6 +69,13 @@ func _ready() -> void:
 		panel.submitted.connect(submit_task)
 		board.add_child(panel)
 		panels.append(panel)
+	fade_overlay = ColorRect.new()
+	fade_overlay.size = Vector2(1280, 720)
+	fade_overlay.color = Color.BLACK
+	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fade_overlay.z_index = 100
+	fade_overlay.visible = false
+	board.add_child(fade_overlay)
 	portrait = Panel.new()
 	portrait.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var style := StyleBoxFlat.new()
@@ -219,6 +228,8 @@ func _process(delta: float) -> void:
 		advance_game(audio.clock_seconds())
 	if state == "finishing" and wall_time - finish_started > 1.3:
 		show_result(scoring.cleared())
+	fade_overlay.visible = state == "fail" and wall_time - result_started < .5
+	if fade_overlay.visible: fade_overlay.color.a = 1.0 - (wall_time - result_started) / .5
 	for panel in panels:
 		panel.visible = state == "playing"
 		panel.mouse_filter = Control.MOUSE_FILTER_STOP if state == "playing" else Control.MOUSE_FILTER_IGNORE
@@ -333,6 +344,7 @@ func finish_stage() -> void:
 func show_result(clear: bool) -> void:
 	audio.stop()
 	state = "clear" if clear else "fail"
+	result_started = wall_time
 	best_score = maxi(best_score, scoring.score)
 	save_preferences()
 	audio.play_effect("clear" if clear else "fail")
