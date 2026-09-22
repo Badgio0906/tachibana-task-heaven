@@ -169,10 +169,11 @@ def worker(state):
         s.poly([(57,53),(49,60),(54,66),(63,56)],WHITE,SHADOW)
         s.poly([(46,60),(50,60),(52,65),(49,69),(53,80),(49,85),(44,81),(46,68),(44,65)],CORAL,INK)
         s.rect(47,65,2,11,'#e7a078')
-        s.poly([(25,59),(20,66),(21,86),(24,92),(31,91),(31,81),(29,64)],SHIRT,INK)
-        s.rect(22,71,3,14,SHADOW);s.rect(23,87,8,4,WHITE)
-        hand(s,23,91)
-        if state!='clear':
+        if state!='fail':
+            s.poly([(25,59),(20,66),(21,86),(24,92),(31,91),(31,81),(29,64)],SHIRT,INK)
+            s.rect(22,71,3,14,SHADOW);s.rect(23,87,8,4,WHITE)
+            hand(s,23,91)
+        if state not in ['clear','fail']:
             s.poly([(66,59),(72,66),(72,86),(69,91),(62,90),(63,78),(63,64)],SHIRT,INK)
             s.rect(68,71,3,14,SHADOW);s.rect(63,86,8,4,WHITE)
             hand(s,62,90)
