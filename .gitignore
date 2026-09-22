@@ -1,0 +1,7 @@
+.godot/
+*.tmp
+tests/artifacts/*.wav
+__pycache__/
+docs/**/*.import
+tests/artifacts/server*.log
+tests/artifacts/browser_error.json

@@ -1,0 +1,10 @@
+*.gd text eol=lf
+*.tscn text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.yml text eol=lf
+*.wav binary
+*.wasm binary
+*.pck binary
+*.otf binary
