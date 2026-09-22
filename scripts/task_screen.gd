@@ -9,6 +9,7 @@ var task_id := 1
 var flash := 0.0
 var bad := false
 var complete := false
+var hint := false
 var notifications := 1
 var font: Font
 var elapsed := 0.0
@@ -55,6 +56,8 @@ func text_at(words: String, point: Vector2, font_size: int, color: Color = INK) 
 
 func _draw() -> void:
 	var tint: Color = COLORS[task_id - 1]
+	if hint:
+		box(Rect2(-7, -7, size.x + 14, size.y + 14), Color("ffe186"), 17, 4)
 	box(Rect2(Vector2.ZERO, size), Color("fffdf5"), 12, 3)
 	box(Rect2(3, 3, size.x - 6, 57), tint, 9)
 	text_at(str(task_id), Vector2(15, 42), 32)

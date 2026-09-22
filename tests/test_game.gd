@@ -73,6 +73,21 @@ func run() -> void:
 	check(game.state == "fail" and game.scoring.misses == 15, "15 omissions reach fail scene")
 	game.begin_stage(1)
 	check(game.scoring.score == 0 and game.scoring.misses == 0, "retry resets run state")
+	var first_round: Dictionary = game.stage.timeline[0]
+	var first_note: Dictionary = first_round.notes[0]
+	var cue_time: float = float(first_note.target_time) - float(game.stage.seconds_per_beat)
+	game.ojt_mode = true
+	game.advance_game(cue_time - .01)
+	check(game.ojt_cue().is_empty(), "OJT stays hidden before its one-beat lead")
+	game.advance_game(cue_time + .01)
+	check(int(game.ojt_cue().channel) == int(first_note.channel), "OJT previews the correct next channel")
+	game._process(0)
+	check(game.panels[int(first_note.channel) - 1].hint, "OJT highlights the correct touch screen")
+	game.advance_game(float(first_note.target_time) - .27)
+	check(game.phase == "answer" and game.now < float(first_round.answer_start), "early input window keeps exact start time for countdown")
+	check(game.scoring.score == 0 and game.scoring.misses == 0, "OJT does not score or change timing")
+	game.ojt_mode = false
+	check(game.ojt_cue().is_empty(), "OJT off hides guidance")
 	game.pause_game()
 	check(game.state == "paused", "pause opens")
 	game.resume_game()

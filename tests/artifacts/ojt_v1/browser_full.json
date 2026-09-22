@@ -1,0 +1,144 @@
+{
+  "base": "http://127.0.0.1:8766/",
+  "mode": "full",
+  "results": [
+    {
+      "audio": {
+        "state": "running",
+        "sampleRate": 48000,
+        "ready": true,
+        "buffers": 13
+      }
+    },
+    {
+      "pauseDrift": 0
+    },
+    {
+      "audioEnergy": 0.19110772013664246
+    },
+    {
+      "stage": 0,
+      "combo": 4,
+      "counts": {
+        "GOOD": 0,
+        "MISS": 0,
+        "OK": 0,
+        "PERFECT": 4
+      },
+      "misses": 0,
+      "ojt": false,
+      "phase": "reaction",
+      "portrait": false,
+      "round": 0,
+      "score": 400,
+      "state": "practice_result",
+      "task": 50
+    },
+    {
+      "stage": 1,
+      "combo": 26,
+      "counts": {
+        "GOOD": 0,
+        "MISS": 0,
+        "OK": 0,
+        "PERFECT": 26
+      },
+      "misses": 0,
+      "ojt": false,
+      "phase": "reaction",
+      "portrait": false,
+      "round": 5,
+      "score": 2600,
+      "state": "between",
+      "task": 100
+    },
+    {
+      "stage": 2,
+      "combo": 60,
+      "counts": {
+        "GOOD": 0,
+        "MISS": 0,
+        "OK": 0,
+        "PERFECT": 60
+      },
+      "misses": 0,
+      "ojt": false,
+      "phase": "reaction",
+      "portrait": false,
+      "round": 5,
+      "score": 6000,
+      "state": "between",
+      "task": 100
+    },
+    {
+      "stage": 3,
+      "combo": 114,
+      "counts": {
+        "GOOD": 0,
+        "MISS": 0,
+        "OK": 0,
+        "PERFECT": 114
+      },
+      "misses": 0,
+      "ojt": false,
+      "phase": "reaction",
+      "portrait": false,
+      "round": 5,
+      "score": 11400,
+      "state": "clear",
+      "task": 100
+    },
+    {
+      "judgmentProbe": {
+        "GOOD": 1,
+        "MISS": 1,
+        "OK": 1,
+        "PERFECT": 0
+      }
+    },
+    {
+      "failure": {
+        "combo": 0,
+        "counts": {
+          "GOOD": 1,
+          "MISS": 15,
+          "OK": 1,
+          "PERFECT": 0
+        },
+        "misses": 15,
+        "ojt": false,
+        "phase": "answer",
+        "portrait": false,
+        "round": 4,
+        "score": 110,
+        "stage": 1,
+        "state": "fail",
+        "task": 0
+      }
+    },
+    {
+      "mobile": {
+        "combo": 4,
+        "counts": {
+          "GOOD": 0,
+          "MISS": 0,
+          "OK": 0,
+          "PERFECT": 4
+        },
+        "misses": 0,
+        "ojt": false,
+        "phase": "reaction",
+        "portrait": false,
+        "round": 0,
+        "score": 400,
+        "stage": 0,
+        "state": "practice_result",
+        "task": 50
+      }
+    },
+    {
+      "portrait": true
+    }
+  ],
+  "errors": []
+}

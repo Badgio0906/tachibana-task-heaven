@@ -1,0 +1,62 @@
+{
+  "base": "http://127.0.0.1:8766/",
+  "mode": "short",
+  "results": [
+    {
+      "audio": {
+        "state": "running",
+        "sampleRate": 48000,
+        "ready": true,
+        "buffers": 13
+      }
+    },
+    {
+      "pauseDrift": 0
+    },
+    {
+      "audioEnergy": 0.19529695808887482
+    },
+    {
+      "stage": 0,
+      "combo": 4,
+      "counts": {
+        "GOOD": 0,
+        "MISS": 0,
+        "OK": 0,
+        "PERFECT": 4
+      },
+      "misses": 0,
+      "ojt": false,
+      "phase": "reaction",
+      "portrait": false,
+      "round": 0,
+      "score": 400,
+      "state": "practice_result",
+      "task": 50
+    },
+    {
+      "mobile": {
+        "combo": 4,
+        "counts": {
+          "GOOD": 0,
+          "MISS": 0,
+          "OK": 0,
+          "PERFECT": 4
+        },
+        "misses": 0,
+        "ojt": false,
+        "phase": "reaction",
+        "portrait": false,
+        "round": 0,
+        "score": 400,
+        "stage": 0,
+        "state": "practice_result",
+        "task": 50
+      }
+    },
+    {
+      "portrait": true
+    }
+  ],
+  "errors": []
+}

@@ -46,8 +46,14 @@ func office() -> void:
 		for j in range(5):
 			draw_rect(Rect2(x + 16 + j * 44, 231 - (j % 3) * 12, 29, 51 + (j % 3) * 12), Color("93b4c5"))
 		draw_line(Vector2(x + 130, 180), Vector2(x + 130, 286), INK, 3)
-	box(Rect2(38, 527, 910, 39), Color("c28d69"), 9, 4)
-	draw_rect(Rect2(61, 566, 864, 154), Color("dbb38c"))
+	# A shallow desktop viewed from above leaves room for the seated worker at natural scale.
+	draw_colored_polygon(PackedVector2Array([Vector2(38, 527), Vector2(948, 527), Vector2(913, 603), Vector2(12, 603)]), Color("d5a780"))
+	draw_line(Vector2(38, 527), Vector2(948, 527), INK, 4)
+	draw_line(Vector2(12, 603), Vector2(913, 603), INK, 4)
+	draw_rect(Rect2(12, 605, 901, 25), Color("b98165"))
+	draw_line(Vector2(12, 631), Vector2(913, 631), INK, 4)
+	draw_rect(Rect2(52, 631, 66, 89), Color("b98165"))
+	draw_rect(Rect2(804, 631, 66, 89), Color("b98165"))
 	box(Rect2(994, 508, 236, 30), Color("c28d69"), 8, 3)
 	draw_rect(Rect2(1015, 538, 190, 182), Color("dbb38c"))
 	# Two ultrawide monitors, each containing two distinct task regions.
@@ -64,8 +70,6 @@ func office() -> void:
 	box(Rect2(819, 575, 68, 63), PAPER, 10, 3)
 	draw_arc(Vector2(889, 604), 18, -1.6, 1.6, 15, INK, 4)
 	txt("月曜", 829, 612, 17)
-	var sway := sin(game.wall_time * 6) * minf(13, game.scoring.combo / 2.5)
-	character("tachibana_" + game.tachibana_expression, Rect2(351 + sway, 509, 225, 253))
 	character("boss_" + game.boss_expression, Rect2(986, 282, 242, 272))
 	if game.tachibana_expression == "miss": txt("!?", 560, 597, 45, Color("da6859"))
 	elif game.scoring.combo >= 10: txt("♪".repeat(mini(3, game.scoring.combo / 10)), 566, 613, 36, TEAL)
@@ -90,22 +94,42 @@ func hud() -> void:
 	txt("MISS  %d / %d" % [game.scoring.misses, int(game.settings.miss_limit)], 732, 104, 17)
 	txt("PRACTICE" if game.stage_index == 0 else "STAGE %02d / 03" % game.stage_index, 971, 54, 17)
 	txt("%d BPM" % game.stage.bpm, 974, 91, 23)
-	var phase_copy: String = {"intro": "お仕事、はじめます", "demo": "上司のお手本 • 覚えよう", "ready": "はい！ せーの！", "answer": "あなたの番 • 同じリズムで！", "reaction": game.instruction, "final": "FINAL TASK  •  深呼吸…"}.get(game.phase, "")
-	box(Rect2(261, 142, 628, 66), INK if game.phase == "answer" else ORANGE, 26, 3)
-	txt(phase_copy, 297, 186, 27, PAPER if game.phase == "answer" else INK)
+	var until_start := INF
+	if game.round_index >= 0:
+		until_start = float(game.stage.timeline[game.round_index].answer_start) - game.now
+	var preparing: bool = game.phase in ["ready", "answer"] and until_start > 0.0
+	var input_started: bool = game.phase == "answer" and until_start <= 0.0
+	var phase_copy: String = {"intro": "お仕事、はじめます", "demo": "上司のお手本 • 覚えよう", "reaction": game.instruction, "final": "FINAL TASK  •  深呼吸…"}.get(game.phase, "")
+	if preparing:
+		phase_copy = "入力まで あと %d 拍" % maxi(1, ceili(until_start / float(game.stage.seconds_per_beat)))
+	elif input_started:
+		phase_copy = "今！ 入力スタート" if until_start > -.25 else "あなたの番 • リズムに合わせて！"
+	var banner_color := INK if input_started else Color("ffda75") if preparing else ORANGE
+	box(Rect2(261, 142, 628, 66), banner_color, 26, 3)
+	txt(phase_copy, 297, 186, 27, PAPER if input_started else INK)
 	if game.phase == "demo":
 		txt(game.instruction, 321, 264, 43)
 	elif game.phase == "final":
 		txt("FINAL TASK", 320, 263, 40)
+	elif game.ojt_mode and game.phase in ["ready", "answer"] and not game.ojt_cue().is_empty():
+		var cue: Dictionary = game.ojt_cue()
+		var channel := int(cue.channel)
+		box(Rect2(280, 215, 590, 76), PAPER, 16, 3)
+		box(Rect2(290, 223, 90, 58), TaskScreen.COLORS[channel - 1], 12, 2)
+		txt(str(channel), 315, 264, 42)
+		txt("次は  %s" % TaskScreen.NAMES[channel - 1], 397, 260, 30)
+		txt("今！" if game.now >= float(cue.target_time) else "次の拍で", 708, 260, 23, Color("a04634"))
 	elif game.judge_text != "" and game.reaction > 0:
 		var color := Color("d56858") if game.judge_text.begins_with("MISS") else Color("326a66")
 		txt(game.judge_text, 347, 263, 43, color)
 		if absf(game.judge_delta) > 1 and not game.judge_text.begins_with("MISS"):
 			txt("%+d ms" % roundi(game.judge_delta), 713, 254, 19, color)
-	else:
-		var beat := maxi(0, int(floor(game.now / float(game.stage.seconds_per_beat))))
-		for i in range(4):
-			draw_circle(Vector2(443 + i * 80, 247), 13 if i == beat % 4 else 8, TEAL if i == beat % 4 else Color("a7beb4"))
+	elif preparing:
+		box(Rect2(365, 221, 419, 47), INK, 15)
+		var elapsed_beats := clampf(2.0 - until_start / float(game.stage.seconds_per_beat), 0.0, 2.0)
+		box(Rect2(372, 228, maxf(10, 405 * elapsed_beats / 2.0), 33), Color("ffda75"), 9)
+	elif input_started and until_start > -.28:
+		txt("↓ ここから 1・2・3・4！", 397, 262, 30, Color("a04634"))
 	txt("%s  /  %d:%02d" % [game.stage.theme, int(maxf(0, game.stage.duration - game.now)) / 60, int(maxf(0, game.stage.duration - game.now)) % 60], 41, 698, 19)
 	txt("数字キー 1・2・3・4  /  画面をタップ", 768, 697, 19)
 	if game.round_index >= 0:
@@ -115,7 +139,7 @@ func hud() -> void:
 		if game.phase in ["demo", "answer", "ready"]:
 			for i in range(int(round_data.length)):
 				var point := Vector2(47 + i * 28, 655)
-				draw_circle(point, 6, ORANGE if i == int(floor(beat_position)) else PAPER)
+				draw_circle(point, 6, INK if i == int(floor(beat_position)) else Color("d7b066"))
 
 func title() -> void:
 	draw_rect(Rect2(0, 0, 1280, 720), CREAM)
@@ -153,11 +177,11 @@ func help() -> void:
 		box(Rect2(127 + i * 252, 206, 233, 88), TaskScreen.COLORS[i], 16, 2)
 		txt("%d  %s" % [i + 1, TaskScreen.NAMES[i]], 146 + i * 252, 246, 25)
 		txt(["タンバリン", "トライアングル", "シンバル", "バスドラム"][i], 146 + i * 252, 277, 17)
-	txt("① お手本を聞く   →   ②「はい！」  →   ③ 同じ拍で 1〜4", 128, 343, 24)
+	txt("① お手本を聞く   →   ② 2拍のカウント   →   ③「今！」から入力", 128, 343, 24)
 	txt("スマートフォンは対応する画面を直接タップ。横向きで遊びます。", 128, 382, 20)
 	txt("PERFECT ±%dms / GOOD ±%dms / OK ±%dms" % [roundi(float(game.settings.PERFECT_WINDOW) * 1000), roundi(float(game.settings.GOOD_WINDOW) * 1000), roundi(float(game.settings.OK_WINDOW) * 1000)], 128, 430, 18)
-	txt("最後にTASK %d%%以上でクリア。" % int(game.settings.clear_task), 128, 468, 21)
-	txt("%d MISSでカムチャッカ行き！" % int(game.settings.miss_limit), 128, 505, 21)
+	txt("TASK %d%%以上でクリア / %d MISSでカムチャッカ行き！" % [int(game.settings.clear_task), int(game.settings.miss_limit)], 128, 468, 19)
+	txt("OJT：次の番号と画面を1拍前から表示", 128, 498, 18)
 	txt("入力補正  %+d ms" % int(game.settings.input_offset_ms), 764, 488, 18)
 	txt("音量  %d%%" % roundi(game.volume * 100), 791, 554, 20)
 	txt("入力が遅れて判定される場合は + に調整", 605, 608, 16)

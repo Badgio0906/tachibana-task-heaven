@@ -1,0 +1,24 @@
+{
+  "cueStatus": {
+    "combo": 0,
+    "counts": {
+      "GOOD": 0,
+      "MISS": 0,
+      "OK": 0,
+      "PERFECT": 0
+    },
+    "misses": 0,
+    "ojt": true,
+    "phase": "ready",
+    "portrait": false,
+    "round": 0,
+    "score": 0,
+    "stage": 0,
+    "state": "playing",
+    "task": 40
+  },
+  "pausedOff": false,
+  "pausedOn": true,
+  "perfect": 1,
+  "errors": []
+}

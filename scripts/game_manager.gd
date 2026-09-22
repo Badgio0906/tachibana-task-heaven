@@ -6,6 +6,7 @@ const Rhythm = preload("res://scripts/rhythm_manager.gd")
 const Audio = preload("res://scripts/audio_manager.gd")
 const Screen = preload("res://scripts/task_screen.gd")
 const Board = preload("res://scripts/office_view.gd")
+const WorkerOverlay = preload("res://scripts/worker_overlay.gd")
 var state := "title"
 var previous_state := "title"
 var settings: Dictionary
@@ -33,6 +34,7 @@ var font: Font
 var seen_tutorial := false
 var best_score := 0
 var volume := .75
+var ojt_mode := false
 var pending_stage := 0
 var final_hit := false
 var finish_started := 0.0
@@ -69,6 +71,11 @@ func _ready() -> void:
 		panel.submitted.connect(submit_task)
 		board.add_child(panel)
 		panels.append(panel)
+	var worker := WorkerOverlay.new()
+	worker.game = self
+	worker.size = Vector2(1280, 720)
+	worker.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	board.add_child(worker)
 	fade_overlay = ColorRect.new()
 	fade_overlay.size = Vector2(1280, 720)
 	fade_overlay.color = Color.BLACK
@@ -115,6 +122,7 @@ func load_preferences() -> void:
 		best_score = cfg.get_value("game", "best", 0)
 		settings.input_offset_ms = cfg.get_value("audio", "offset_ms", 0)
 		volume = cfg.get_value("audio", "volume", .75)
+		ojt_mode = cfg.get_value("game", "ojt_mode", false)
 
 func save_preferences() -> void:
 	if test_mode: return
@@ -123,6 +131,7 @@ func save_preferences() -> void:
 	cfg.set_value("game", "best", best_score)
 	cfg.set_value("audio", "offset_ms", settings.input_offset_ms)
 	cfg.set_value("audio", "volume", volume)
+	cfg.set_value("game", "ojt_mode", ojt_mode)
 	cfg.save("user://task_heaven.cfg")
 
 func clear_buttons() -> void:
@@ -169,6 +178,13 @@ func show_help() -> void:
 	button("+20 ms", Rect2(935, 456, 145, 48), func(): adjust_offset(20))
 	button("音量 −", Rect2(605, 522, 145, 48), func(): adjust_volume(-.15))
 	button("音量 +", Rect2(935, 522, 145, 48), func(): adjust_volume(.15))
+	button("OJT  %s" % ("ON" if ojt_mode else "OFF"), Rect2(202, 510, 260, 48), toggle_ojt)
+
+func toggle_ojt() -> void:
+	ojt_mode = not ojt_mode
+	save_preferences()
+	if state == "help": show_help()
+	elif state == "paused": show_pause_buttons()
 
 func adjust_offset(amount: int) -> void:
 	settings.input_offset_ms = clampi(int(settings.input_offset_ms) + amount, -200, 200)
@@ -233,13 +249,17 @@ func _process(delta: float) -> void:
 	for panel in panels:
 		panel.visible = state == "playing"
 		panel.mouse_filter = Control.MOUSE_FILTER_STOP if state == "playing" else Control.MOUSE_FILTER_IGNORE
+		panel.hint = false
+	if state == "playing" and ojt_mode:
+		var next_note := ojt_cue()
+		if not next_note.is_empty(): panels[int(next_note.channel) - 1].hint = true
 	board.queue_redraw()
 	status_elapsed += delta
 	if audio.is_web and status_elapsed > .1:
 		status_elapsed = 0.0
 		var status := {"state": state, "stage": stage_index, "phase": phase, "round": round_index,
 			"score": scoring.score, "combo": scoring.combo, "misses": scoring.misses,
-			"task": scoring.task, "counts": scoring.counts, "portrait": portrait.visible}
+			"task": scoring.task, "counts": scoring.counts, "portrait": portrait.visible, "ojt": ojt_mode}
 		JavaScriptBridge.eval("window.TaskHeavenStatus = " + JSON.stringify(status), true)
 
 func advance_game(time_value: float) -> void:
@@ -297,6 +317,17 @@ func submit_task(channel: int) -> void:
 	if state != "playing" or phase != "answer": return
 	rhythm.submit_task(channel, now if test_mode else audio.clock_seconds())
 	if stage_index > 0 and scoring.misses >= int(settings.miss_limit): show_result(false)
+
+func ojt_cue() -> Dictionary:
+	if not ojt_mode or round_index < 0 or phase not in ["ready", "answer"]: return {}
+	var round_data: Dictionary = stage.timeline[round_index]
+	for i in range(round_data.notes.size()):
+		if rhythm.resolved.has(i): continue
+		var note: Dictionary = round_data.notes[i]
+		if now >= float(note.target_time) - float(stage.seconds_per_beat) and now <= float(note.target_time) + float(settings.OK_WINDOW):
+			return note
+		break
+	return {}
 
 func on_judged(channel: int, grade_name: String, delta: float, omitted: bool) -> void:
 	judge_text = grade_name + ("!" if grade_name != "MISS" else "...")
@@ -360,8 +391,13 @@ func pause_game() -> void:
 	if audio.is_web: JavaScriptBridge.eval("window.TaskAudio.context.suspend()", true)
 	else: audio.music.stream_paused = true
 	clear_buttons()
+	show_pause_buttons()
+
+func show_pause_buttons() -> void:
+	clear_buttons()
 	button("続ける →", Rect2(441, 345, 399, 65), resume_game, true)
-	button("TITLE", Rect2(541, 438, 200, 56), show_title)
+	button("OJT  %s" % ("ON" if ojt_mode else "OFF"), Rect2(441, 421, 399, 55), toggle_ojt)
+	button("TITLE", Rect2(541, 489, 200, 48), show_title)
 
 func resume_game() -> void:
 	if portrait.visible: return
