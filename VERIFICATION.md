@@ -55,3 +55,4 @@
 - Godot統合テスト **154 checks / 0 failures**。予告の開始・対象・OFF・得点非干渉も確認：`tests/artifacts/unit_integration.json`。
 - ローカルChrome全編：練習4入力、本編114 PERFECT、11400点・クリア、GOOD/OK/誤番号MISS、15MISSで失敗、844×390タッチ練習4 PERFECT、縦画面案内、実行エラー0：`tests/artifacts/ojt_v1/browser_full.json`。
 - OJT実ブラウザ：2拍カウント、1拍前の予告、対象画面枠、PERFECT入力、一時停止でのOFF→ONを確認。スクリーンショットと結果は `tests/artifacts/ojt_v1/`。通常のユーザー設定は変更しない一時ブラウザコンテキストを使用。
+- GitHub Pages更新：Actions run `35795650097` 成功。公開 `index.pck` のSHA-256がローカルWeb出力と一致。公開URLのChromeで説明・練習4 PERFECT・一時停止・844×390タッチ4 PERFECT・縦画面案内・実行エラー0を再確認。
