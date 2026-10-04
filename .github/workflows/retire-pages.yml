@@ -1,0 +1,19 @@
+name: Retire standalone Pages after arcade migration
+on:
+  workflow_dispatch:
+permissions:
+  pages: write
+jobs:
+  unpublish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unpublish only the migrated standalone site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          case "$GITHUB_REPOSITORY" in
+            Badgio0906/yokodori-days|Badgio0906/tachibana-task-heaven|Badgio0906/finger-heart-challenge) ;;
+            *) echo "This repository is not a migration retirement target"; exit 1 ;;
+          esac
+          gh api --method DELETE "repos/$GITHUB_REPOSITORY/pages"
+          echo "Standalone Pages site unpublished; source repository retained."
